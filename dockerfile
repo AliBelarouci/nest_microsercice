@@ -1,5 +1,5 @@
 # Use the official Node.js image as the base image
-FROM node:14
+FROM node:18-alpine AS build
 
 # Set the working directory inside the container
 WORKDIR /usr/src/app
@@ -8,16 +8,26 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm install --production
 
 # Copy the rest of the application code into the container
 COPY . .
 
-# Set environment variables (if necessary)
-# ENV NODE_ENV=production
+# Build the application
+RUN npm run build
+
+# Use a slim base image for the final image
+FROM node:18-alpine
+
+# Set the working directory inside the container
+WORKDIR /usr/src/app
+
+# Copy only the necessary artifacts from the build stage
+COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /usr/src/app/package.json ./
 
 # Expose port 3000 (or any other port your Nest.js app listens on)
 EXPOSE 3000
 
 # Command to run the application
-CMD [ "node", "dist/main" ]  # Assuming your main file is located at dist/main.js
+CMD [ "node", "dist/main" ]
