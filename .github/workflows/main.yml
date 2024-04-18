@@ -38,8 +38,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PW }}
 
       - name: Build Docker image
-        run: docker build -t yourdockerhubusername/yourimage:latest .
+        run: docker build -t alisoufnet/nest_microsercice:latest .
 
       - name: Push Docker image to Docker Hub
-        run: docker push yourdockerhubusername/yourimage:latest
+        run: docker push alisoufnet/nest_microsercice:latest:latest
 
