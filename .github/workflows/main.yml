@@ -48,6 +48,8 @@ jobs:
         #run: docker build -t alisoufnet/nest_microsercice:latest .
 
       - name: Push Docker image to Docker Hub
-        run: docker push $DOCKER_TAG
+        run: |
+          DOCKER_TAG="${{ secrets.DOCKERHUB_USERNAME }}/nest_microservice:${{ steps.version.outputs.version }}"
+          docker push $DOCKER_TAG
         #run: docker push alisoufnet/nest_microsercice:latest
 
