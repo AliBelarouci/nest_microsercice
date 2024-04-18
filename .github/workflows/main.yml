@@ -41,5 +41,5 @@ jobs:
         run: docker build -t alisoufnet/nest_microsercice:latest .
 
       - name: Push Docker image to Docker Hub
-        run: docker push alisoufnet/nest_microsercice:latest:latest
+        run: docker push alisoufnet/nest_microsercice:latest
 
