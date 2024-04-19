@@ -12,6 +12,7 @@ RUN npm install -g @nestjs/cli
 
 # Install dependencies
 RUN npm install --production
+RUN npm install --save-dev @types/node
 
 
 
@@ -32,6 +33,8 @@ COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/package.json ./
 # Install dependencies
 RUN npm install --production
+RUN npm install --save-dev @types/node
+
 # Expose port 3000 (or any other port your Nest.js app listens on)
 EXPOSE 3000
 
