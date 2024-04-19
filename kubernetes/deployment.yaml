@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: nest-microservice
-        image: alisoufnet/nest_microservice:1.0.3
+        image: alisoufnet/nest_microservice:1.0.5
         ports:
         - containerPort: 3000  # Assuming your Nest.js app listens on port 3000
