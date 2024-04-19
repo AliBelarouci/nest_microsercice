@@ -7,11 +7,13 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json or yarn.lock into the container
 COPY package*.json ./
 
+# Install Nest.js CLI globally
+RUN npm install -g @nestjs/cli
+
 # Install dependencies
 RUN npm install --production
 
-# Install Nest.js CLI globally
-RUN npm install -g @nestjs/cli
+
 
 # Copy the rest of the application code into the container
 COPY . .
@@ -28,7 +30,8 @@ WORKDIR /usr/src/app
 # Copy only the necessary artifacts from the build stage
 COPY --from=build /usr/src/app/dist ./dist
 COPY --from=build /usr/src/app/package.json ./
-
+# Install dependencies
+RUN npm install --production
 # Expose port 3000 (or any other port your Nest.js app listens on)
 EXPOSE 3000
 

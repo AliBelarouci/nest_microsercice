@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nest-microservice
+  namespace: ms1  # Specify the namespace here
+spec:
+  replicas: 3   # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: nest-microservice
+  template:
+    metadata:
+      labels:
+        app: nest-microservice
+    spec:
+      containers:
+      - name: nest-microservice
+        image: alisoufnet/nest_microservice:1.0.2
+        ports:
+        - containerPort: 3000  # Assuming your Nest.js app listens on port 3000
