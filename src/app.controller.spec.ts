@@ -1,10 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import * as os from 'os';
 describe('AppController', () => {
   let appController: AppController;
-  const hostname = os.hostname();
+  const hostname = process.env.HOSTNAME || 'localhost' || require('os').hostname();
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
