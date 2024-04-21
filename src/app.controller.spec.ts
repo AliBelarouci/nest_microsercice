@@ -1,13 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { StressService } from './app.StressService';
 describe('AppController', () => {
   let appController: AppController;
   const hostname = process.env.HOSTNAME || 'localhost' || require('os').hostname();
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [AppService,StressService],
     }).compile();
     appController = app.get<AppController>(AppController);
   });
