@@ -9,5 +9,8 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
-  
+  @Get('/ms')
+  getMs(): string {
+    return this.appService.getMs();
+  }
 }

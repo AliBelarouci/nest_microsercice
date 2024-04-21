@@ -16,5 +16,8 @@ describe('AppController', () => {
     it('should return "Hello World!"', () => {
       expect(appController.getHello()).toBe(`Hello World! Hostname: ${hostname}`);
     });
+    it('Hello Microservice"', () => {
+      expect(appController.getMs()).toBe(`Hello Microservice From Hostname: ${hostname}`);
+    });
   });
 });
