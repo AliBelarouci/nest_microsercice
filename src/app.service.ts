@@ -12,4 +12,5 @@ export class AppService {
     const hostname = process.env.HOSTNAME || 'localhost' || require('os').hostname();
      return `Hello World! Hostname: ${hostname}`;
   }
+  
 }

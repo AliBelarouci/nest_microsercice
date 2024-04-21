@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: nest-microservice
-        image: alisoufnet/nest_microservice:1.1.0
+        image: alisoufnet/nest_microservice:1.1.1
         ports:
         - containerPort: 3000
